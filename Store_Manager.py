@@ -49,7 +49,11 @@ def create_sale():
     sales.append(sale_order)
     return jsonify({'sale_order':sale_order})
 
+# END POINT for a Admin get all sale order records
 
+@app.route('/api/v1/sales', methods = ['GET'])
+def sale_records():
+    return jsonify({'sale_records':sales})
 
 
 
