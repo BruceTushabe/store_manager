@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
+# Empty lists where products/Sales are to be POSTED OR GOT
 
 products = []
 sale = []    
 
+# Creating the END POINT for ADMIN can add a product
+ 
 @app.route('/api/v1/products', methods=['POST'])
 def create_product():
     product = {
@@ -18,14 +21,14 @@ def create_product():
     products.append(product)
     return jsonify({'product': product})
 
+# This is the END POINT for ADMIN/ATTENDANT can get all products
+
 @app.route('/api/v1/products', methods =['GET'])
 def get_all():
-    return jsonify({'product':products})
+    return jsonify({'products':products})
 
-@app.route('/api/v1/products/<int:id>', methods =['GET'])
-def get_one(id):
-    prods = [product for product in products if product['id'] == id]
-    return jsonify({'product':prods[0]})
+
+
 
 
 
