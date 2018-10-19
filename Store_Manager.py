@@ -21,11 +21,18 @@ def create_product():
     products.append(product)
     return jsonify({'product': product})
 
-# This is the END POINT for ADMIN/ATTENDANT can get all products
+# This is the END POINT for ADMIN/ATTENDANT can get all products 
 
 @app.route('/api/v1/products', methods =['GET'])
 def get_all():
     return jsonify({'products':products})
+
+# END POINT for getting one specific product by id
+
+@app.route('/api/v1/products/<int:id>', methods =['GET'])
+def get_one(id):
+    prods = [product for product in products if product['id'] == id]
+    return jsonify({'product':prods[0]})
 
 
 
