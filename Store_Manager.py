@@ -55,6 +55,15 @@ def create_sale():
 def sale_records():
     return jsonify({'sale_records':sales})
 
+# For fetching a single one specific record
+
+@app.route('/api/v1/sales/<int:saleId>', methods = ['GET'])
+def one_record(saleId):
+    for sale_order in sales:
+        if sale_order['saleId'] == saleId:
+            return jsonify({'sale_order': sale_order})
+    return jsonify({'message': 'There are no sales'})
+
 
 
 
