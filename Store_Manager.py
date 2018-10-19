@@ -47,7 +47,11 @@ def create_sale():
     }
 
     sales.append(sale_order)
-    return jsonify({'sale':sale_order})
+    return jsonify({'sale_order':sale_order})
+
+
+
+
 
 
 
