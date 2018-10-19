@@ -4,7 +4,7 @@ app = Flask(__name__)
 # Empty lists where products/Sales are to be POSTED OR GOT
 
 products = []
-sale = []    
+sales = []    
 
 # Creating the END POINT for ADMIN can add a product
  
@@ -33,6 +33,21 @@ def get_all():
 def get_one(id):
     prods = [product for product in products if product['id'] == id]
     return jsonify({'product':prods[0]})
+
+# A store attendant can add a sale order
+
+@app.route('/api/v1/sales', methods = ['POST'])
+def create_sale():
+
+    sale_order = {
+        'saleId': len(sales) +1,
+        'attendant': request.json['attendant'],
+        'cost': request.json['cost'],
+        'total': int(request.json['quantity']) * int(request.json['cost'])
+    }
+
+    sales.append(sale_order)
+    return jsonify({'sale':sale_order})
 
 
 
