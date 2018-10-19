@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
-# Empty lists were products/Sales are to be POSTED OR GOT
+# Empty lists where products/Sales are to be POSTED OR GOT
 
 products = []
 sale = []    
