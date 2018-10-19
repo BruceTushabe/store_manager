@@ -21,6 +21,12 @@ def create_product():
     products.append(product)
     return jsonify({'product': product})
 
+# This is the END POINT for ADMIN/ATTENDANT can get all products
+
+@app.route('/api/v1/products', methods =['GET'])
+def get_all():
+    return jsonify({'products':products})
+
 
 
 
